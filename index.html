@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zahara A. G. | Portfolio</title>
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS file link -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        .section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            text-align: center;
+        }
+        .projects, .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .project, .skill {
+            flex: 1 1 calc(33% - 20px);
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .project img, .skill img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Zahara A. G. | Portfolio</h1>
+        <p>Welcome to my personal portfolio website</p>
+    </header>
+    
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>Hi, I'm Zahara A. G., a passionate engineer with experience in web development, design, and various technical fields. I specialize in building efficient and innovative solutions for real-world problems.</p>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project">
+                <img src="project1.jpg" alt="Project 1">
+                <h3>Project Title 1</h3>
+                <p>A brief description of the project, including technologies used and the impact it had.</p>
+            </div>
+            <div class="project">
+                <img src="project2.jpg" alt="Project 2">
+                <h3>Project Title 2</h3>
+                <p>A brief description of the project, including technologies used and the impact it had.</p>
+            </div>
+            <div class="project">
+                <img src="project3.jpg" alt="Project 3">
+                <h3>Project Title 3</h3>
+                <p>A brief description of the project, including technologies used and the impact it had.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill">
+                <img src="html5.svg" alt="HTML5">
+                <h3>HTML5</h3>
+                <p>Experience in structuring and designing web pages using HTML5.</p>
+            </div>
+            <div class="skill">
+                <img src="css3.svg" alt="CSS3">
+                <h3>CSS3</h3>
+                <p>Proficient in creating visually appealing designs using CSS3.</p>
+            </div>
+            <div class="skill">
+                <img src="js.svg" alt="JavaScript">
+                <h3>JavaScript</h3>
+                <p>Skilled in adding interactivity and dynamic features to websites using JavaScript.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>If you’d like to get in touch, feel free to reach out via email at <a href="mailto:zahara@example.com">zahara@example.com</a>.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Zahara A. G. | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
