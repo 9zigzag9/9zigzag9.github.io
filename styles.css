@@ -1,32 +1,36 @@
+/* General Styling */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    scroll-behavior: smooth;
 }
+
 header {
     background-color: #333;
     color: white;
     padding: 20px;
     text-align: center;
 }
-header h1 {
-    margin: 0;
-}
+
 nav {
     display: flex;
     justify-content: center;
     background-color: #444;
 }
+
 nav a {
     color: white;
     padding: 14px 20px;
     text-decoration: none;
     text-align: center;
 }
+
 nav a:hover {
     background-color: #575757;
 }
+
 .section {
     padding: 20px;
     margin: 20px;
@@ -34,14 +38,17 @@ nav a:hover {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .section h2 {
     text-align: center;
 }
+
 .projects, .skills {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
+
 .project, .skill {
     flex: 1 1 calc(33% - 20px);
     padding: 10px;
@@ -49,14 +56,31 @@ nav a:hover {
     border-radius: 8px;
     text-align: center;
 }
+
 .project img, .skill img {
     max-width: 100%;
     border-radius: 8px;
 }
+
 footer {
     text-align: center;
     padding: 10px;
     background-color: #333;
     color: white;
     margin-top: 20px;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #575757;
 }
