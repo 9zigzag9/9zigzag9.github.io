@@ -99,7 +99,7 @@ if ($hour < 12) {
     <!-- About Me -->
     <section id="about" class="section">
         <h2>About Me</h2>
-        <p>Hello! I am Zahara A. G., a passionate engineer and developer with expertise in web development, design, and problem-solving.</p>
+        <p>Hello! I am Zahara A. G., a passionate engineer and developer with expertise in web development, design, and problem-solving.!!!!</p>
     </section>
 
     <!-- Projects -->
@@ -145,7 +145,7 @@ if ($hour < 12) {
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Zahara A. G. | All Rights Reserved-</p>
+        <p>&copy; 2024 Zahara A. G. | All Rights Reserved</p>
     </footer>
 
     <!-- JavaScript -->
