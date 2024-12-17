@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Zahara A. G. | Portfolio</title>
-    <link rel="stylesheet" href="styles.css"> <!-- External CSS file link -->
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS file -->
     <style>
+        /* Basic Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            scroll-behavior: smooth; /* Smooth scrolling */
         }
         header {
             background-color: #333;
             color: white;
             padding: 20px;
             text-align: center;
-        }
-        header h1 {
-            margin: 0;
         }
         nav {
             display: flex;
@@ -32,6 +31,7 @@
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
+            transition: background-color 0.3s;
         }
         nav a:hover {
             background-color: #575757;
@@ -43,25 +43,6 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .section h2 {
-            text-align: center;
-        }
-        .projects, .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .project, .skill {
-            flex: 1 1 calc(33% - 20px);
-            padding: 10px;
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .project img, .skill img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
         footer {
             text-align: center;
             padding: 10px;
@@ -69,75 +50,118 @@
             color: white;
             margin-top: 20px;
         }
+        /* Mobile Responsive Nav */
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                display: none;
+            }
+            nav.active {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <h1>Zahara A. G. | Portfolio</h1>
-        <p>Welcome to my personal portfolio website</p>
+        <p id="greeting"></p> <!-- Dynamic Greeting -->
     </header>
-    
-    <nav>
+
+    <!-- Navigation -->
+    <div class="menu-icon" id="menu-icon">☰ Menu</div>
+    <nav id="nav-links">
         <a href="#about">About Me</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
     </nav>
 
+    <!-- About Me -->
     <section id="about" class="section">
         <h2>About Me</h2>
         <p>Hi, I'm Zahara A. G., a passionate engineer with experience in web development, design, and various technical fields. I specialize in building efficient and innovative solutions for real-world problems.</p>
     </section>
 
+    <!-- Projects -->
     <section id="projects" class="section">
         <h2>Projects</h2>
-        <div class="projects">
-            <div class="project">
-                <img src="project1.jpg" alt="Project 1">
-                <h3>Project Title 1</h3>
-                <p>A brief description of the project, including technologies used and the impact it had.</p>
-            </div>
-            <div class="project">
-                <img src="project2.jpg" alt="Project 2">
-                <h3>Project Title 2</h3>
-                <p>A brief description of the project, including technologies used and the impact it had.</p>
-            </div>
-            <div class="project">
-                <img src="project3.jpg" alt="Project 3">
-                <h3>Project Title 3</h3>
-                <p>A brief description of the project, including technologies used and the impact it had.</p>
-            </div>
+        <div>
+            <p>Project 1: Interactive Web Design</p>
+            <p>Project 2: Engineering Solutions Showcase</p>
         </div>
     </section>
 
+    <!-- Skills -->
     <section id="skills" class="section">
         <h2>Skills</h2>
-        <div class="skills">
-            <div class="skill">
-                <img src="html5.svg" alt="HTML5">
-                <h3>HTML5</h3>
-                <p>Experience in structuring and designing web pages using HTML5.</p>
-            </div>
-            <div class="skill">
-                <img src="css3.svg" alt="CSS3">
-                <h3>CSS3</h3>
-                <p>Proficient in creating visually appealing designs using CSS3.</p>
-            </div>
-            <div class="skill">
-                <img src="js.svg" alt="JavaScript">
-                <h3>JavaScript</h3>
-                <p>Skilled in adding interactivity and dynamic features to websites using JavaScript.</p>
-            </div>
-        </div>
+        <p>HTML5, CSS3, JavaScript, Python, MATLAB, 3D Printing</p>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="section">
         <h2>Contact</h2>
-        <p>If you’d like to get in touch, feel free to reach out via email at <a href="mailto:zahara@example.com">zahara@example.com</a>.</p>
+        <p>Email me at: <a href="mailto:zahara@example.com">zahara@example.com</a></p>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Zahara A. G. | All Rights Reserved</p>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 1. Dynamic Greeting Based on Time of Day
+        function displayGreeting() {
+            const greetingElement = document.getElementById('greeting');
+            const hour = new Date().getHours();
+            let greeting;
+
+            if (hour < 12) {
+                greeting = "Good Morning! Welcome to my portfolio.";
+            } else if (hour < 18) {
+                greeting = "Good Afternoon! Let's explore my work.";
+            } else {
+                greeting = "Good Evening! Take a look at my projects.";
+            }
+
+            greetingElement.textContent = greeting;
+        }
+
+        // 2. Responsive Navigation Menu
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.getElementById('nav-links');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Toggle nav visibility
+        });
+
+        // 3. Smooth Scrolling
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Initialize functions
+        displayGreeting();
+    </script>
 </body>
 </html>
