@@ -1,6 +1,6 @@
 <?php
 // Server-side dynamic greeting based on time
-date_default_timezone_set('Asia/Kuala_Lumpur'); // Adjust timezone if needed
+date_default_timezone_set('Asia/Kuala_Lumpur');
 $hour = date("H");
 if ($hour < 12) {
     $greeting = "Good Morning! Welcome to my portfolio.";
@@ -8,22 +8,6 @@ if ($hour < 12) {
     $greeting = "Good Afternoon! Let's explore my work.";
 } else {
     $greeting = "Good Evening! Take a look at my projects.";
-}
-
-// Handle form submission for the contact section
-$successMessage = '';
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $message = htmlspecialchars($_POST['message']);
-
-    // Example: Simulate form handling logic
-    if (!empty($name) && !empty($email) && !empty($message)) {
-        // Normally, here you would send an email or store the message in a database
-        $successMessage = "Thank you, $name! Your message has been received.";
-    } else {
-        $successMessage = "Please fill out all fields.";
-    }
 }
 ?>
 
@@ -33,9 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zahara A. G. | Portfolio</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external stylesheet -->
     <style>
-        /* CSS Styling (for simplicity included inline) */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -72,19 +54,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .form-group {
             margin-bottom: 15px;
         }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
         .form-group input, .form-group textarea {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .success-message {
-            color: green;
+        button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #575757;
+        }
+        .success-message, .error-message {
             margin-top: 10px;
+            color: green;
+            display: none;
+        }
+        .error-message {
+            color: red;
         }
     </style>
 </head>
@@ -92,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Header -->
     <header>
         <h1>Zahara A. G. | Portfolio</h1>
-        <p><?php echo $greeting; ?></p> <!-- Dynamic Greeting -->
+        <p><?php echo $greeting; ?></p>
     </header>
 
     <!-- Navigation -->
@@ -106,16 +99,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- About Me -->
     <section id="about" class="section">
         <h2>About Me</h2>
-        <p>Hello! I am Zahara A. G., a passionate engineer and developer with expertise in web development, design, and problem-solving. I specialize in creating innovative and efficient solutions for real-world challenges.</p>
+        <p>Hello! I am Zahara A. G., a passionate engineer and developer with expertise in web development, design, and problem-solving.</p>
     </section>
 
     <!-- Projects -->
     <section id="projects" class="section">
         <h2>Projects</h2>
         <ul>
-            <li><strong>Project 1:</strong> Interactive Web Design</li>
-            <li><strong>Project 2:</strong> Engineering Solutions Showcase</li>
-            <li><strong>Project 3:</strong> Portfolio Website with PHP Integration</li>
+            <li>Project 1: Interactive Web Design</li>
+            <li>Project 2: Engineering Solutions Showcase</li>
         </ul>
     </section>
 
@@ -125,7 +117,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <ul>
             <li>HTML5 & CSS3</li>
             <li>JavaScript & PHP</li>
-            <li>3D Printing & Laser Cutting</li>
             <li>Python, MATLAB</li>
         </ul>
     </section>
@@ -133,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Contact Form -->
     <section id="contact" class="section">
         <h2>Contact Me</h2>
-        <form action="" method="POST">
+        <form id="contact-form">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required>
@@ -147,15 +138,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <textarea id="message" name="message" rows="5" required></textarea>
             </div>
             <button type="submit">Send Message</button>
+            <p class="success-message" id="success-message">Your message has been sent!</p>
+            <p class="error-message" id="error-message">An error occurred. Please try again.</p>
         </form>
-        <?php if ($successMessage): ?>
-            <p class="success-message"><?php echo $successMessage; ?></p>
-        <?php endif; ?>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Zahara A. G. | All Rights Reserved</p>
+        <p>&copy; 2024 Zahara A. G. | All Rights Reserved-</p>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // AJAX Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+
+            fetch('process_form.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    document.getElementById('contact-form').reset();
+                } else {
+                    successMessage.style.display = 'none';
+                    errorMessage.style.display = 'block';
+                }
+            })
+            .catch(() => {
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'block';
+            });
+        });
+    </script>
 </body>
 </html>
