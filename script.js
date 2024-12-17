@@ -15,19 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     greetingElement.textContent = greetingMessage;
 });
 
-// Simulated Form Submission
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    // Simulate form processing
-    const successMessage = document.getElementById('success-message');
-    successMessage.style.display = 'block';
-
-    // Clear form fields
-    this.reset();
-
-    // Hide message after 3 seconds
-    setTimeout(() => {
-        successMessage.style.display = 'none';
-    }, 3000);
+// Alert Message for Contact Button
+document.getElementById('contactBtn').addEventListener('click', function() {
+    alert("Thank you for visiting my portfolio! Feel free to send me an email.");
 });
